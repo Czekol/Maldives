@@ -5,21 +5,18 @@
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	
-	font-size: 1.6rem;
 
+	font-size: 1.6rem;
 }
 
-
 // NAV
-
 
 .burger-btn {
 	position: fixed;
 	top: 20px;
 	right: 20px;
 	padding: 1em;
-    background: none;
+	background: none;
 	border: 1px solid transparent;
 	cursor: pointer;
 	z-index: 1000;
@@ -33,7 +30,7 @@ body {
 	&:hover {
 		.burger-btn__bars::after,
 		.burger-btn__bars::before {
-            width: 100%;
+			width: 100%;
 		}
 	}
 
@@ -60,14 +57,70 @@ body {
 		&::before {
 			top: 27px;
 			width: 30%;
-            transition-delay: .1s;
+			transition-delay: 0.1s;
 		}
 	}
 }
 
+.nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 100%;
+	transform: translateX(100%);
+	transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+	background-image: color.$blue-gradient-solid;
+	z-index: 100;
 
-// HEADER 
+	&--active {
+		transform: translateX(0);
+	}
 
+	&__item {
+		position: relative;
+		display: block;
+		font-size: 2.8rem;
+		margin: 0.5em 0;
+		padding: 0.5em 2em;
+		color: color.$pure-white;
+		text-decoration: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 3px;
+			height: 100%;
+			transform: scaleY(0);
+			background-color: color.$pure-white;
+			transition: transform 0.3s;
+		}
+
+		&:hover::before {
+			transform: scaleY(1);
+		}
+	}
+}
+
+@keyframes navItemsAnimation {
+	from {
+		transform: translateX(200%);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+.nav-items-animation {
+	animation: navItemsAnimation 1s both;
+}
+
+// HEADER
 
 .header {
 	position: relative;
@@ -105,7 +158,82 @@ body {
 		cursor: pointer;
 
 		&::before {
-		background-color: color.$light-white;
+			background-color: color.$light-white;
+		}
+	}
+}
+
+// MAIN
+// DREAMS SECTION
+
+.dreams {
+	&__box {
+		display: flex;
+		flex-direction: column;
+		margin: 2em 0;
+	}
+
+	&__img {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+
+	&__title {
+		margin-bottom: 0.5em;
+	}
+
+	&__text {
+		font-size: 1.4rem;
+		font-weight: 300;
+	}
+}
+
+// HERO-IMG
+
+.hero-img {
+	position: relative;
+	padding: 10em 2em;
+	@include mixin.heroImages('../img/mobile_kayak.jpg');
+	text-align: center;
+	color: color.$pure-white;
+	overflow: hidden;
+
+	&__title {
+		font-family: 'Dancing Script', cursive;
+		font-size: 4.8rem;
+		margin-bottom: 0.5em;
+	}
+
+	&__text {
+		padding: 1em 0;
+	}
+}
+
+@media (min-width: 576px) {
+	.dreams {
+		&__box {
+			flex-direction: row;
+			justify-content: space-between;
+
+			&-text {
+				width: 55%;
+				&--right {
+					text-align: right;
+				}
+			}
+
+			&-img {
+				width: 40%;
+
+				&--right {
+					order: 1;
+				}
+			}
+		}
+
+		&__img {
+			margin-bottom: 0px;
+			max-height: 300px;
 		}
 	}
 }
@@ -133,6 +261,25 @@ body {
 			font-size: 1.6rem;
 		}
 	}
+
+	.dreams {
+		&__text {
+			font-size: 1.8rem;
+		}
+	}
+
+	.hero-img {
+		padding: 30rem 2em;
+
+		hr {
+			margin: 0 auto;
+			width: 70%;
+		}
+
+		&__text {
+			font-size: 2.2rem;
+		}
+	}
 }
 
 @media (min-width: 992px) {
@@ -142,10 +289,51 @@ body {
 	}
 
 	.header {
-		background-image: color.$blue-gradient,  url('../img/desktop_palms.jpg');
+		background-image: color.$blue-gradient, url('../img/desktop_palms.jpg');
 
 		&__heading {
 			font-size: 10rem;
+		}
+	}
+
+	.nav {
+		&__item {
+			font-size: 4.8rem;
+		}
+	}
+
+	.dreams {
+		&__box {
+			margin: 5em 0;
+
+			&-text {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				margin-bottom: 2.5em;
+			}
+		}
+
+		&__title {
+			font-size: 3.6rem;
+		}
+
+		&__text {
+			font-size: 2.2rem;
+		}
+	}
+
+	.hero-img {
+		padding: 40rem 2em;
+		background-image: color.$blue-gradient, url('../img/desktop_kayak.jpg');
+
+		&__title {
+			font-size: 7rem;
+		}
+
+		hr {
+			width: 60%;
+			max-width: 900px;
 		}
 	}
 }
