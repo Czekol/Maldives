@@ -91,6 +91,7 @@ html {
 }
 body {
   font-family: "Open Sans", sans-serif;
+  font-weight: 300;
   font-size: 1.6rem;
 }
 
@@ -199,6 +200,18 @@ body {
 .nav-items-animation {
   -webkit-animation: navItemsAnimation 1s both;
           animation: navItemsAnimation 1s both;
+}
+
+.black-bars-color,
+.black-bars-color::before,
+.black-bars-color::after {
+  background-color: #2837a7;
+}
+
+.blue-focus:focus {
+  outline: none;
+  border: 1px solid #2837a7;
+  border-radius: 8px;
 }
 
 .header {
@@ -468,6 +481,87 @@ body {
   color: #2e2e2e;
 }
 
+.contact {
+  position: relative;
+  background-color: #eee;
+  overflow: hidden;
+}
+.contact .white-block-left {
+  background-color: #2e2e2e;
+}
+.contact__form, .contact__form-top {
+  display: flex;
+  flex-direction: column;
+}
+.contact__form-label {
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+.contact__form-input, .contact__form-textarea {
+  margin-bottom: 2em;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.6rem;
+}
+.contact__form-textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+.contact__form-btn {
+  align-self: flex-end;
+  padding: 1em;
+  width: 100%;
+  max-width: 300px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  background-color: #1755e7;
+  cursor: pointer;
+}
+.contact__form-btn::before {
+  background-color: #164dcc;
+}
+
+.footer {
+  color: #fff;
+  background: #2e2e2e;
+}
+.footer .wrapper {
+  padding: 6em 2em 2em;
+}
+.footer__box {
+  font-size: 1.4rem;
+}
+.footer__box-desktop {
+  display: none;
+}
+.footer__box-title {
+  margin-bottom: 1em;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+.footer__box-social {
+  margin: 2em 0 2em;
+}
+.footer__box-link {
+  padding: 0 0.3em;
+  font-size: 3.6rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer__box-link:first-child {
+  padding-left: 0;
+}
+.footer__box-link:hover {
+  color: #eee;
+}
+.footer__bottom-text {
+  padding: 2em;
+  text-align: center;
+}
+
 @media (min-width: 576px) {
   .dreams__box {
     flex-direction: row;
@@ -551,6 +645,33 @@ body {
   .islands__card {
     margin: 1em;
     width: 45%;
+  }
+  .footer__boxes {
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer__box {
+    margin: 0 2em;
+    width: 25%;
+  }
+  .footer__box:first-child {
+    width: 50%;
+  }
+  .footer__box-title {
+    font-size: 2.4rem;
+  }
+  .footer__box-list {
+    list-style: none;
+  }
+  .footer__box-list-item {
+    margin-bottom: 1em;
+  }
+  .footer__box-list-item a {
+    color: #eee;
+    text-decoration: none;
+  }
+  .footer__box-desktop {
+    display: block;
   }
 }
 @media (min-width: 992px) {
